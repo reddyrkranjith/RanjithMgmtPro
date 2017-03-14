@@ -1,0 +1,72 @@
+.greeting {
+	font-weight: 400;
+	font-size: 14px;
+	color: #808080;
+}
+
+.nav-quick-bordered {
+	border-top: 1px solid #e0e0e0;
+	border-left: 1px solid #e0e0e0;
+}
+
+.nav-quick {
+	background-color: #fff;
+}
+
+.nav-quick-bordered {
+	border-top: 1px solid #e0e0e0;
+	border-left: 1px solid #e0e0e0;
+}
+
+.nav-quick-bordered .nav-item {
+	border-right: 1px solid #e0e0e0;
+	border-bottom: 1px solid #e0e0e0;
+}
+
+.nav-quick-bordered .nav-item {
+	border-right: 1px solid #e0e0e0;
+	border-bottom: 1px solid #e0e0e0;
+}
+
+.nav-quick .nav-item {
+	position: relative;
+	display: block;
+	padding: 0;
+	list-style: none;
+	text-align: center;
+}
+
+.nav-quick .nav-link .icon {
+	font-size: 3rem;
+	display: block;
+	margin-bottom: .5rem;
+}
+
+.nav-quick .nav-link {
+	display: block;
+	padding: 1.5rem 0px 1.2rem 0px;
+	color: #757575;
+	font-size: 1.5rem;
+}
+
+.nav-link {
+	position: relative;
+	display: block;
+	overflow: hidden;
+	padding: .715rem 1.072rem;
+}
+
+.nav-quick .nav-link:hover {
+	background-color: #eee;
+}
+
+.nav-quick .nav-link:hover {
+	text-decoration: none;
+	background-color: #eee;
+}
+
+.nav-quick .badge,.nav-quick .badge-pill {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+}
