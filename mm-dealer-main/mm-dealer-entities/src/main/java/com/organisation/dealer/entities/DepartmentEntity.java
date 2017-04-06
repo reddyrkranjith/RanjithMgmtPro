@@ -1,18 +1,17 @@
 package com.organisation.dealer.entities;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity(name = "DepartmentEntity")
-@Table(name = "tbl_departments")
+@Table(name = "mgmt_tbl_dept")
 public class DepartmentEntity implements Serializable{
 
 	/**
@@ -23,57 +22,48 @@ public class DepartmentEntity implements Serializable{
 	@Id
 	@GeneratedValue
 	@Column(name = "dept_id", nullable = false, updatable = false)
-	private long id;
+	private Long deptId;
 	
-	@Column(name = "dept_name", nullable = false, updatable = false)
-	private String department;
+	@Column(name = "dept_name", nullable = false, updatable = true)
+	private String deptName;
 	
-	@Column(name = "dept_description", nullable = false, updatable = true)
-	private String details;
+	@Column(name = "dept_description", nullable = true, updatable = true)
+	private String deptDesc;
 	
-	@Column(name = "dept_cover", nullable = false, updatable = true)
+	@Column(name = "dept_cover", nullable = true, updatable = true)
 	private String deptCover;
 	
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "department")
-	private List<SubjectsEntity> subject;
+	@OneToMany(mappedBy = "departmentEntity")
+	private Set<StudentsAcadamicsEntity> acadamicsEntities;
 	
-	public long getId() {
-		return id;
+	public Long getDeptId() {
+		return deptId;
 	}
-
-	public void setId(long id) {
-		this.id = id;
+	public void setDeptId(Long deptId) {
+		this.deptId = deptId;
 	}
-
-	public String getDepartment() {
-		return department;
+	public String getDeptName() {
+		return deptName;
 	}
-
-	public void setDepartment(String department) {
-		this.department = department;
+	public void setDeptName(String deptName) {
+		this.deptName = deptName;
 	}
-
-	public String getDetails() {
-		return details;
+	public String getDeptDesc() {
+		return deptDesc;
 	}
-
-	public void setDetails(String details) {
-		this.details = details;
+	public void setDeptDesc(String deptDesc) {
+		this.deptDesc = deptDesc;
 	}
-
 	public String getDeptCover() {
 		return deptCover;
 	}
-
 	public void setDeptCover(String deptCover) {
 		this.deptCover = deptCover;
 	}
-
-	public List<SubjectsEntity> getSubject() {
-		return subject;
+	public Set<StudentsAcadamicsEntity> getAcadamicsEntities() {
+		return acadamicsEntities;
 	}
-
-	public void setSubject(List<SubjectsEntity> subject) {
-		this.subject = subject;
+	public void setAcadamicsEntities(Set<StudentsAcadamicsEntity> acadamicsEntities) {
+		this.acadamicsEntities = acadamicsEntities;
 	}
 }

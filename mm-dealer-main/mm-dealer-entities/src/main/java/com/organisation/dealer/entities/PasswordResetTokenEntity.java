@@ -12,7 +12,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity(name = "PasswordResetTokenEntity")
-@Table(name = "usertokens_tbl")
+@Table(name = "mgmt_user_tokens")
 public class PasswordResetTokenEntity implements Serializable{
 
 	/**
