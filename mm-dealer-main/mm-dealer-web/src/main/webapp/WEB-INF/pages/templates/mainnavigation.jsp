@@ -11,7 +11,12 @@
 		<ul class="nav navbar-nav navbar-right">
 			<li class="dropdown dropdown-user"><a class="dropdown-toggle"
 				data-toggle="dropdown"> <img
-					src="resources/assets/images/image.png" alt=""> <span>${user}</span>
+					src="resources/assets/images/image.png" alt="">
+					<span>
+						<security:authorize access="isAuthenticated()">
+						   <security:authentication property="principal.username" /> 
+						</security:authorize>
+					</span>
 					<i class="caret"></i>
 			</a>
 				<ul class="dropdown-menu dropdown-menu-right">

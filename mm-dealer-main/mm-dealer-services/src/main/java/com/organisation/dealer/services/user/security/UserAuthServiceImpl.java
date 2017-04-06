@@ -13,7 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.organisation.dealer.entities.UserEntity;
+import com.organisation.dealer.entities.MgmtUserEntity;
 import com.organisation.dealer.repository.UserAuthenticationRepository;
 import com.organisation.dealer.repository.exception.ManagmentRepositoryException;
 
@@ -36,12 +36,12 @@ public class UserAuthServiceImpl implements UserDetailsService {
 	public UserDetails loadUserByUsername(String userID)throws UsernameNotFoundException {
 		UserDetails user = null;
 		try {
-			UserEntity loadUserByUserName = repo.getUserByUserID(userID);
+			MgmtUserEntity loadUserByUserName = repo.getUserByUserID(userID);
 			if (loadUserByUserName != null) {
 				Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
 				GrantedAuthority grant = new GrantedAuthorityImpl(loadUserByUserName.getRole().name());
 				authorities.add(grant);
-				user = new UserDetailsImpl(loadUserByUserName.getEmail(),loadUserByUserName.getPassword(), loadUserByUserName.getFirstName()+loadUserByUserName.getLastName(),authorities);
+				user = new UserDetailsImpl(loadUserByUserName.getEmail(),loadUserByUserName.getPassword(), loadUserByUserName.getMgmtUserProfileEntity().getFirstName()+loadUserByUserName.getMgmtUserProfileEntity().getLastName(),authorities);
 			} else {
 				throw new UsernameNotFoundException("User name not found.");
 			}

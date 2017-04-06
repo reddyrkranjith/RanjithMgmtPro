@@ -8,7 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Login</title>
-<base href="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/" />
+	<base href="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/" />
 	<!-- Global stylesheets -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
 	<link href="resources/assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
@@ -115,7 +115,7 @@
                         min: 2,
                     },
                         notEmpty: {
-                        message: 'Please supply your first name'
+                        message: 'Please enter user id'
                     }
                 }
             },
@@ -125,7 +125,7 @@
                         min: 2,
                     },
                     notEmpty: {
-                        message: 'Please supply your last name'
+                        message: 'Please enter password'
                     }
                 }
             }       		

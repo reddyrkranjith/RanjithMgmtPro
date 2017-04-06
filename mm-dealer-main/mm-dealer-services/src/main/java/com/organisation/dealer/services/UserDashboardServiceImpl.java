@@ -20,17 +20,18 @@ public class UserDashboardServiceImpl implements UserDashboardService {
 	@Autowired
 	@Qualifier("UserDashboardRepository")
 	UserDashboardRepository dashboardRepository;
-	 
+
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = ManagmentServiceException.class)
-	public List<DepartmentEntity> getAllDepartmentDetails()
+	public List<DepartmentEntity> getAllDepartments()
 			throws ManagmentServiceException {
+		List<DepartmentEntity> users = null;
 		try {
-			return dashboardRepository.getAllDepartmentDetails();
-		} catch(ManagmentRepositoryException e) {
+			users= dashboardRepository.getAllDepartments();
+		}catch(ManagmentRepositoryException e) {
 			throw new ManagmentServiceException(ManagmentServiceErrorCodes.EXCEPTION_OCCURED,
 					ManagmentServiceErrorCodes.SERVICE_EXCEPTION_CODE);
 		}
+		return users;
 	}
-
 }

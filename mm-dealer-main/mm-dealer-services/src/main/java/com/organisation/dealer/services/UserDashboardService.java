@@ -9,8 +9,6 @@ import com.organisation.dealer.services.exception.ManagmentServiceException;
 
 @Service
 public interface UserDashboardService {
-
-	public List<DepartmentEntity> getAllDepartmentDetails() throws ManagmentServiceException;
 	
-	
+	public List<DepartmentEntity> getAllDepartments() throws ManagmentServiceException;
 }

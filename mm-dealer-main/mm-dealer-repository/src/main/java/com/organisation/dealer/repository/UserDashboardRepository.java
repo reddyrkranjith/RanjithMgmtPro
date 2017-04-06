@@ -10,5 +10,5 @@ import com.organisation.dealer.repository.exception.ManagmentRepositoryException
 @Repository
 public interface UserDashboardRepository {
 	
-	public List<DepartmentEntity> getAllDepartmentDetails() throws ManagmentRepositoryException;
+	public List<DepartmentEntity> getAllDepartments() throws ManagmentRepositoryException;
 }

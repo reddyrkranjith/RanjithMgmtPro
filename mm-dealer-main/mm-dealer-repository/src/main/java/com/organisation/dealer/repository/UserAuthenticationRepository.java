@@ -2,8 +2,8 @@ package com.organisation.dealer.repository;
 
 import org.springframework.stereotype.Repository;
 
+import com.organisation.dealer.entities.MgmtUserEntity;
 import com.organisation.dealer.entities.PasswordResetTokenEntity;
-import com.organisation.dealer.entities.UserEntity;
 import com.organisation.dealer.repository.exception.ManagmentRepositoryException;
 
 @Repository
@@ -14,14 +14,14 @@ public interface UserAuthenticationRepository {
 	 * @return
 	 * @throws ManagmentRepositoryException
 	 */
-	public UserEntity getUserByUserID(String userId)throws ManagmentRepositoryException;
+	public MgmtUserEntity getUserByUserID(String userId)throws ManagmentRepositoryException;
 	
 	/**
 	 * @param email
 	 * @return
 	 * @throws ManagmentRepositoryException
 	 */
-	public UserEntity getUserByUserEmail(String email) throws ManagmentRepositoryException;
+	public MgmtUserEntity getUserByUserEmail(String email) throws ManagmentRepositoryException;
 
 	/**
 	 * @param hasedToken
@@ -48,6 +48,5 @@ public interface UserAuthenticationRepository {
 	 * @param userEntity
 	 * @throws ManagmentRepositoryException
 	 */
-	public void updateUserCredentials(UserEntity userEntity) throws ManagmentRepositoryException;
-	
+	public void updateUserCredentials(MgmtUserEntity userEntity) throws ManagmentRepositoryException;
 }

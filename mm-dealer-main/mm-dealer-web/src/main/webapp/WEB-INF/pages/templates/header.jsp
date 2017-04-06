@@ -1,11 +1,11 @@
 <div class="navbar-fixed-top">
 	<!-- Main navbar -->
-	<jsp:include page="mainnavigation.jsp" />
+	<%@ include file="mainnavigation.jsp" %>
 	<!-- /main navbar -->
 	<!-- Second navbar -->
-	<jsp:include page="secondnavigation.jsp" />
+	<%@ include file="secondnavigation.jsp" %>
 	<!-- /second navbar -->
 	<!-- Page header -->
-	<%-- <jsp:include page="pageheader.jsp" /> --%>
+	<%-- <%@ include file="pageheader.jsp" %> --%>
 	<!-- /Page header -->
 </div>

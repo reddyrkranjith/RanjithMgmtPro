@@ -3,7 +3,7 @@ package com.organisation.dealer.services;
 import org.springframework.stereotype.Service;
 
 import com.organisation.dealer.beans.ResetPasswordBeans;
-import com.organisation.dealer.entities.UserEntity;
+import com.organisation.dealer.entities.MgmtUserEntity;
 import com.organisation.dealer.services.exception.ManagmentServiceException;
 
 @Service
@@ -14,7 +14,7 @@ public interface UserAuthenticationService {
 	 * @return
 	 * @throws ManagmentServiceException
 	 */
-	public UserEntity getUserByUserEmail(String email) throws ManagmentServiceException;
+	public MgmtUserEntity getUserByUserEmail(String email) throws ManagmentServiceException;
 	
 	/**
 	 * @param email

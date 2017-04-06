@@ -31,6 +31,11 @@
 			<!-- Converter for images -->
 			<bean
 				class="org.springframework.http.converter.BufferedImageHttpMessageConverter" />
+			<!-- This must come after our image converter -->
+			<bean id="jsonConverter"
+				class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+				<property name="supportedMediaTypes" value="application/json" />
+			</bean>
 		</mvc:message-converters>
 	</mvc:annotation-driven>
 	<mvc:resources mapping="/resources/**" location="/resources/" />
@@ -42,5 +47,9 @@
 		<property name="suffix">
 			<value>.jsp</value>
 		</property>
+	</bean>
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	<!-- setting maximum upload size -->
+		<property name="maxUploadSize" value="100000" />
 	</bean>
 </beans>

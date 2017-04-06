@@ -19,7 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.organisation.dealer.beans.ForgotPasswordBeans;
 import com.organisation.dealer.beans.ResetPasswordBeans;
 import com.organisation.dealer.beans.UserBeans;
-import com.organisation.dealer.entities.UserEntity;
+import com.organisation.dealer.entities.MgmtUserEntity;
 import com.organisation.dealer.services.UserAuthenticationService;
 import com.organisation.dealer.services.exception.ManagmentServiceException;
 
@@ -72,7 +72,7 @@ public class UserAuthenticationController {
 		if (result.hasErrors()) {
             return "forgotpassword";
         } else {
-        	UserEntity user= userAuthenticationService.getUserByUserEmail(forgotPass.getEmail());
+        	MgmtUserEntity user= userAuthenticationService.getUserByUserEmail(forgotPass.getEmail());
         	if(user == null){
         		model.addAttribute("error", "User do not exits.");
         		model.addAttribute("forgotPass", new ForgotPasswordBeans());

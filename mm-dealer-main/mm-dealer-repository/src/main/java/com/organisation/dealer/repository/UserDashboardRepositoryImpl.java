@@ -23,19 +23,20 @@ public class UserDashboardRepositoryImpl implements UserDashboardRepository {
 
 	@Override
 	@Transactional
-	public List<DepartmentEntity> getAllDepartmentDetails()
+	public List<DepartmentEntity> getAllDepartments()
 			throws ManagmentRepositoryException {
-		List<DepartmentEntity> list = null;
+		List<DepartmentEntity> entity = null;
 		try {
 			Session session = sessionFactory.getCurrentSession();
 			Criteria criteria = session.createCriteria(DepartmentEntity.class);
-			list = criteria.list();
+			entity = criteria.list();
 		} catch (HibernateException e) {
 			throw new ManagmentRepositoryException(
 					ManagmentRepositoryException.DATA_ACCESS_EXCEPTION_MESSAGE,
 					ManagmentRepositoryException.DATA_ACCESS_EXCEPTION_CODE);
 		}
-		return list;
+
+		return entity;
 	}
 
 }

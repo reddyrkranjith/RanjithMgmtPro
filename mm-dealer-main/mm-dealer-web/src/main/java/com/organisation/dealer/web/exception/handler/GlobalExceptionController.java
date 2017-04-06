@@ -1,12 +1,14 @@
 package com.organisation.dealer.web.exception.handler;
 
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.organisation.dealer.services.exception.ManagmentServiceException;
 
+@Controller
 @ControllerAdvice
 public class GlobalExceptionController {
 
@@ -23,10 +25,10 @@ public class GlobalExceptionController {
 	 * @param ex
 	 * @return
 	 */
-	@ExceptionHandler(ManagmentServiceException.class)
+	/*@ExceptionHandler(ManagmentServiceException.class)
 	public ModelAndView handleAllException(ManagmentServiceException ex) {
 		ModelAndView model = new ModelAndView("/generic_error");
 		model.addObject("errMsg", ex.getMessage());
 		return model;
-	}
+	}*/
 }

@@ -1,1 +1,1 @@
-<% response.sendRedirect("/android/dashboard"); %>
+<% response.sendRedirect("/mgmt/dashboard"); %>

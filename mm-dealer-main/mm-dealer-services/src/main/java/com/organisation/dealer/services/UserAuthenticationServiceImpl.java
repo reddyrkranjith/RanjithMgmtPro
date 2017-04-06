@@ -13,8 +13,8 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.organisation.dealer.beans.ResetPasswordBeans;
+import com.organisation.dealer.entities.MgmtUserEntity;
 import com.organisation.dealer.entities.PasswordResetTokenEntity;
-import com.organisation.dealer.entities.UserEntity;
 import com.organisation.dealer.repository.UserAuthenticationRepository;
 import com.organisation.dealer.repository.exception.ManagmentRepositoryException;
 import com.organisation.dealer.repository.exception.ManagmentServiceErrorCodes;
@@ -40,9 +40,9 @@ public class UserAuthenticationServiceImpl implements UserAuthenticationService 
 	 */
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = ManagmentServiceException.class)
-	public UserEntity getUserByUserEmail(String email)
+	public MgmtUserEntity getUserByUserEmail(String email)
 			throws ManagmentServiceException {
-		UserEntity user = null;
+		MgmtUserEntity user = null;
 		try {
 			user= userAuthenticationRepository.getUserByUserEmail(email);
 		}catch(ManagmentRepositoryException e) {
@@ -58,7 +58,7 @@ public class UserAuthenticationServiceImpl implements UserAuthenticationService 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = ManagmentServiceException.class)
 	public void generatePasswordResetLink(String email) throws ManagmentServiceException {
-		UserEntity user = null;
+		MgmtUserEntity user = null;
 		try {
 			user= userAuthenticationRepository.getUserByUserEmail(email);
 			if(user == null){
@@ -75,7 +75,7 @@ public class UserAuthenticationServiceImpl implements UserAuthenticationService 
 				}else {
 					userAuthenticationRepository.updatePasswordResetHash(creatPasswordResetTokenEntity(hasedToken, expiryDate, user.getEmail()));
 				}
-				emailer.send("Password Reset link", hasedToken, email, user.getFirstName()+user.getLastName());
+				emailer.send("Password Reset link", hasedToken, email, user.getMgmtUserProfileEntity().getFirstName()+user.getMgmtUserProfileEntity().getLastName());
 			}
 		} catch (ManagmentRepositoryException e) {
 			throw new ManagmentServiceException(ManagmentServiceErrorCodes.EXCEPTION_OCCURED,
@@ -121,7 +121,7 @@ public class UserAuthenticationServiceImpl implements UserAuthenticationService 
 			PasswordResetTokenEntity entity = userAuthenticationRepository
 					.isPasswordResetTokenExits(resetPasswordBeans.getToken());
 			if(entity != null) {
-				UserEntity userEntity= userAuthenticationRepository.getUserByUserEmail(entity.getEmail());
+				MgmtUserEntity userEntity= userAuthenticationRepository.getUserByUserEmail(entity.getEmail());
 				userEntity.setPassword(resetPasswordBeans.getPassword());
 				userEntity.setModificationDate(new Date());
 				userAuthenticationRepository.updateUserCredentials(userEntity);

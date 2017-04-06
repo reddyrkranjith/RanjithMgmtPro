@@ -1,6 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+
 <html>
 <head>
 <meta charset="utf-8">
@@ -48,14 +50,14 @@
 </head>
 <body>
 	<!-- Fixed navbars wrapper -->
-	<jsp:include page="templates/header.jsp" />
+	<%@ include file="templates/header.jsp" %>
 	<!-- /fixed navbars wrapper -->
 
 
 
 
 	<!-- Footer -->
-	<jsp:include page="templates/footer.jsp"></jsp:include>
+	<%@ include file="templates/footer.jsp" %>
 	<!-- /footer -->
 
 	<script type="text/javascript">

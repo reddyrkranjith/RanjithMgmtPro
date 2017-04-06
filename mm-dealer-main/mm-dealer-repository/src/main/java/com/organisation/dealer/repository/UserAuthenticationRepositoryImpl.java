@@ -11,8 +11,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.organisation.dealer.entities.MgmtUserEntity;
 import com.organisation.dealer.entities.PasswordResetTokenEntity;
-import com.organisation.dealer.entities.UserEntity;
 import com.organisation.dealer.repository.exception.ManagmentRepositoryException;
 
 @Repository("UserAuthenticationRepository")
@@ -27,15 +27,15 @@ public class UserAuthenticationRepositoryImpl implements
 
 	@Override
 	@Transactional
-	public UserEntity getUserByUserID(String userId)
+	public MgmtUserEntity getUserByUserID(String userId)
 			throws ManagmentRepositoryException {
-		UserEntity entity = null;
+		MgmtUserEntity entity = null;
 
 		try {
 			Session session = sessionFactory.getCurrentSession();
-			Criteria criteria = session.createCriteria(UserEntity.class);
-			criteria.add(Restrictions.eq("userID", userId));
-			entity = (UserEntity) criteria.uniqueResult();
+			Criteria criteria = session.createCriteria(MgmtUserEntity.class);
+			criteria.add(Restrictions.eq("userId", userId));
+			entity = (MgmtUserEntity) criteria.uniqueResult();
 		} catch (HibernateException e) {
 			LOG_R.error(
 					"Exception occured while getting the user from inventory db",
@@ -50,13 +50,13 @@ public class UserAuthenticationRepositoryImpl implements
 
 	@Override
 	@Transactional
-	public UserEntity getUserByUserEmail(String email) throws ManagmentRepositoryException {
-		UserEntity entity = null;
+	public MgmtUserEntity getUserByUserEmail(String email) throws ManagmentRepositoryException {
+		MgmtUserEntity entity = null;
 		try {
 			Session session = sessionFactory.getCurrentSession();
-			Criteria criteria = session.createCriteria(UserEntity.class);
+			Criteria criteria = session.createCriteria(MgmtUserEntity.class);
 			criteria.add(Restrictions.eq("email", email));
-			entity = (UserEntity) criteria.uniqueResult();
+			entity = (MgmtUserEntity) criteria.uniqueResult();
 		} catch (HibernateException e) {
 			throw new ManagmentRepositoryException(
 					ManagmentRepositoryException.DATA_ACCESS_EXCEPTION_MESSAGE,
@@ -115,7 +115,7 @@ public class UserAuthenticationRepositoryImpl implements
 
 	@Override
 	@Transactional
-	public void updateUserCredentials(UserEntity userEntity)
+	public void updateUserCredentials(MgmtUserEntity userEntity)
 			throws ManagmentRepositoryException {
 		try {
 			Session session = sessionFactory.getCurrentSession();
@@ -126,5 +126,4 @@ public class UserAuthenticationRepositoryImpl implements
 					ManagmentRepositoryException.DATA_ACCESS_EXCEPTION_CODE);
 		}
 	}
-
 }
