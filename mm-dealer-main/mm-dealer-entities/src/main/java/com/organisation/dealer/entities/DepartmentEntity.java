@@ -3,8 +3,10 @@ package com.organisation.dealer.entities;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -33,7 +35,7 @@ public class DepartmentEntity implements Serializable{
 	@Column(name = "dept_cover", nullable = true, updatable = true)
 	private String deptCover;
 	
-	@OneToMany(mappedBy = "departmentEntity")
+	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "departmentEntity")
 	private Set<StudentsAcadamicsEntity> acadamicsEntities;
 	
 	public Long getDeptId() {

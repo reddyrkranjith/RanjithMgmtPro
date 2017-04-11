@@ -32,7 +32,8 @@ public class UserSettingsServiceImpl implements UserSettingsService {
 			StudentsSearchBeans beans) throws ManagmentServiceException {
 		List<StudentsResultsBeans> users = new ArrayList<>();
 		try {
-			getStudentsResultsBeans(settingsRepository.getStudentsBasedOnDeptAndSemister(beans), users);
+			List<MgmtUserEntity> entity = settingsRepository.getStudentsBasedOnDeptAndSemister(beans);
+			getStudentsResultsBeans(entity, users);
 			LOG_R.info("Uers "+users.size());
 		}catch(ManagmentRepositoryException e) {
 			LOG_R.error("Exception "+e.getMessage());

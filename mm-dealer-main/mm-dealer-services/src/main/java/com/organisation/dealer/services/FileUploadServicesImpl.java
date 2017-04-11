@@ -48,7 +48,7 @@ public class FileUploadServicesImpl implements FileUploadServices {
 			e.printStackTrace();
 		} catch(ManagmentRepositoryException e) {
 			LOG_R.info("Exception : "+e.getMessage());
-			throw new ManagmentServiceException(ManagmentServiceErrorCodes.EXCEPTION_OCCURED,
+			throw new ManagmentServiceException(e.getMessage(),
 					ManagmentServiceErrorCodes.SERVICE_EXCEPTION_CODE);
 		}finally{
 			

@@ -37,3 +37,30 @@ $(document).ready(function() {
 		}
 	});
 });
+$(function() {
+	$("input:file").change(function() {
+		var fileExtension = ['xlsx'];
+           if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+                alert("Only 'xlsx' format allowed.");
+                return false;
+			}
+		var photo = document.getElementById("file");
+		var file = photo.files[0];
+		var data = new FormData();
+		data.append('file', file);
+		$.ajax({
+			url : 'uploadFile',
+			type : 'POST',
+			data : data,
+			processData : false, // Don't process the files
+			contentType : false, // Set content type to false as jQuery will tell the server its a query string request
+			success : function(data, textStatus, jqXHR) {
+				alert(textStatus);
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				alert(jqXHR.responseJSON.errorMessage);
+				//console.log(jqXHR.responseJSON.errorMessage);
+			}
+		});
+	});
+});

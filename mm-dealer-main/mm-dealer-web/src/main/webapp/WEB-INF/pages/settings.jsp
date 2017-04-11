@@ -186,7 +186,7 @@
 													<div class="form-group">
 														<label class="display-block">Data Upload</label>
 														<div class="uploader">
-															<input type="file" class="file-styled">
+															<input type="file" id ="file" class="file-styled">
 														</div>
 														<span class="help-block">Accepted formats: xls,
 															xlsx, txt, csv. Max file size 2Mb</span>

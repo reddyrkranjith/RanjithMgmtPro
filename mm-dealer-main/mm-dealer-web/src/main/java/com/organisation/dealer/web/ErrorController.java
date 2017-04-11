@@ -30,10 +30,10 @@ public class ErrorController {
                 errorMsg = "Http Error Code: 404. Resource not found";
                 break;
             }
-            case 500: {
+            /*case 500: {
                 errorMsg = "Http Error Code: 500. Internal Server Error";
                 break;
-            }
+            }*/
         }
         errorPage.addObject("errorMsg", errorMsg);
         return errorPage;
